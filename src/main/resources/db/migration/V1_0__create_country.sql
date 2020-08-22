@@ -1,0 +1,6 @@
+DROP TABLE IF EXISTS country;
+
+CREATE TABLE country (
+  id VARCHAR(3) PRIMARY KEY,
+  name VARCHAR(255) NOT NULL
+);

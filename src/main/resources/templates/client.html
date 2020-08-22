@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../../../favicon.ico">
+
+    <title>Add Client</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+
+    <!-- Custom styles for this template -->
+    <link href="form-validation.css" rel="stylesheet">
+  </head>
+
+  <body class="bg-light">
+
+    <div class="container">
+      <div class="py-5 text-center">
+        <h2>Add Client</h2>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12 order-md-1">
+          <form class="needs-validation" novalidate
+                th:action="@{/}" th:object="${client}" method="post">
+            <div class="row">
+              <input type="hidden" class="form-control" id="id" placeholder=""
+                     th:field="*{id}" th:value="${client?.id}">
+
+              <div class="col-md-6 mb-3">
+                <label for="firstName">First name</label>
+                <span class="alert-danger" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></span>
+                <input type="text" class="form-control" id="firstName" placeholder=""
+                       th:field="*{firstName}" th:value="${client?.firstName}">
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="lastName">Last name</label>
+                <span class="alert-danger" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></span>
+                <input type="text" class="form-control" id="lastName" placeholder=""
+                       th:field="*{lastName}" th:value="${client?.lastName}">
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="username">Username</label>
+              <span class="alert-danger" th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}"></span>
+              <div class="input-group">
+                <input type="text" class="form-control" id="username" placeholder="Username"
+                       th:field="*{userName}" th:value="${client?.userName}">
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="email">Email<span class="text-muted">(Optional)</span></label>
+              <span class="alert-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+              <input type="email" class="form-control" id="email" placeholder="you@example.com"
+                     th:field="*{email}" th:value="${client?.email}">
+            </div>
+
+            <div class="mb-3">
+              <label for="address">Address</label>
+              <span class="alert-danger" th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></span>
+              <input type="text" class="form-control" id="address" placeholder="1234 Main St"
+                     th:field="*{address}" th:value="${client?.address}">
+            </div>
+
+            <div class="mb-3">
+              <label for="country">Country</label>
+                <span class="alert-danger" th:if="${#fields.hasErrors('country.id')}" th:errors="*{country.id}"></span>
+                <select class="custom-select d-block w-100" id="country"
+                        th:field="*{country.id}">
+                  <option value="">Choose...</option>
+                  <option th:each="country: ${countries}"
+                          th:value="${country.id}"
+                          th:text="${country.name}"
+                          th:selected="${country.id == client?.country?.id}"></option>
+                </select>
+            </div>
+            <hr class="mb-4">
+
+            <button class="btn btn-primary btn-lg btn-block" type="submit">Add Client</button>
+          </form>
+        </div>
+      </div>
+
+      <footer class="my-5 pt-5 text-muted text-center text-small">
+        <p class="mb-1">&copy; 2018 Company Name</p>
+      </footer>
+    </div>
+  </body>
+</html>
