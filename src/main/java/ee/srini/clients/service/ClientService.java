@@ -43,7 +43,7 @@ public class ClientService {
 
             if (existingClient.isEmpty()) {
                 log.warn("User {} tried to modify client with id {}", currentUser, clientId);
-                throw new RuntimeException("Client with id " + clientId + "can not be modified");
+                throw new RuntimeException("Client with id " + clientId + " can not be modified");
             }
         }
 
@@ -52,7 +52,7 @@ public class ClientService {
         return clientRepository.save(client);
     }
 
-    private String getCurrentUserUsername() {
+    String getCurrentUserUsername() {
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
         return ((User) principal).getUsername();
