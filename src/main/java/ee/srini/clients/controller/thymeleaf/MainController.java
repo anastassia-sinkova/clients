@@ -53,7 +53,7 @@ public class MainController {
                 ? "Client was successfully created"
                 : "Client was successfully updated";
 
-        clientService.addClient(client);
+        clientService.upsertClient(client);
 
         model.addAttribute("clients", clientService.getAllClients());
         model.addAttribute("message", message);

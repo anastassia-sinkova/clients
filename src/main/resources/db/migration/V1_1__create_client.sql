@@ -7,6 +7,7 @@ CREATE TABLE client (
   user_name VARCHAR(50) NOT NULL,
   email VARCHAR(50),
   address VARCHAR(255) NOT NULL,
+  owner VARCHAR(50) NOT NULL,
   country_id VARCHAR(3) NOT NULL,
   FOREIGN KEY (country_id) REFERENCES country (id)
 );

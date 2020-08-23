@@ -38,10 +38,10 @@ public class Client {
     @Size(min = 10, max = 255)
     private String address;
 
+    private String owner;
+
     @Valid
     @NotNull(message = "Country should be specified")
     @ManyToOne
     private Country country;
-
-    //TODO: creator id
 }

@@ -27,6 +27,6 @@ public class ClientRestController {
 
     @PostMapping
     public Client addClient(@Valid @RequestBody Client client) {
-        return clientService.addClient(client);
+        return clientService.upsertClient(client);
     }
 }
