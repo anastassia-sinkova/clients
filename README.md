@@ -20,3 +20,5 @@ user1       user1
 user2       user2
 user3       user3
 ```
+
+There are some clients added for `user1` and `user2` ready for testing.
